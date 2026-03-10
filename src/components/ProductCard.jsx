@@ -24,7 +24,8 @@ export default function ProductCard({ product, index }) {
                         <span className="product-card-unit"> / {product.unit}</span>
                     </div>
                     <div className="product-card-badge">
-                        🛡️ Fair Price
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1l3.09 6.26L22 8.27l-5 4.87 1.18 6.88L12 16.77l-6.18 3.25L7 13.14 2 8.27l6.91-1.01L12 1z" /></svg>
+                        Fair Price
                     </div>
                 </div>
             </div>

@@ -14,19 +14,19 @@ function CustomTooltip({ active, payload, label }) {
         return (
             <div
                 style={{
-                    background: 'rgba(15, 20, 25, 0.95)',
-                    border: '1px solid rgba(255,255,255,0.1)',
+                    background: '#FFFFFF',
+                    border: '1px solid #E8E8E8',
                     borderRadius: '10px',
                     padding: '10px 14px',
-                    backdropFilter: 'blur(8px)',
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
                 }}
             >
-                <p style={{ fontSize: '0.75rem', color: '#a8b5c4', marginBottom: 4 }}>{label}</p>
-                <p style={{ fontSize: '1rem', fontWeight: 700, color: '#43d88a' }}>
+                <p style={{ fontSize: '0.75rem', color: '#8A919A', marginBottom: 4 }}>{label}</p>
+                <p style={{ fontSize: '1rem', fontWeight: 700, color: '#009B3A' }}>
                     ${payload[0].value.toFixed(2)}
                 </p>
                 {payload[1] && (
-                    <p style={{ fontSize: '0.75rem', color: '#556070', marginTop: 2 }}>
+                    <p style={{ fontSize: '0.75rem', color: '#8A919A', marginTop: 2 }}>
                         Median: ${payload[1].value.toFixed(2)}
                     </p>
                 )}
@@ -51,7 +51,9 @@ export default function TransparencyModal({ product, priceHistory, onClose }) {
                 {/* Header */}
                 <div className="modal-header">
                     <h2>
-                        <span className="modal-header-icon">🔍</span>
+                        <span className="modal-header-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
+                        </span>
                         How Your Price Was Determined
                     </h2>
                     <button className="modal-close" onClick={onClose} id="modal-close-btn">✕</button>
@@ -106,7 +108,7 @@ export default function TransparencyModal({ product, priceHistory, onClose }) {
 
                     {/* 30-Day Price History */}
                     <div className="chart-section">
-                        <h3>📊 30-Day Price History</h3>
+                        <h3>30-Day Price History</h3>
                         <p className="chart-section-sub">
                             Your local region (10-mile radius) · Updated daily
                         </p>
@@ -115,20 +117,20 @@ export default function TransparencyModal({ product, priceHistory, onClose }) {
                                 <AreaChart data={priceHistory} margin={{ top: 5, right: 10, left: -10, bottom: 5 }}>
                                     <defs>
                                         <linearGradient id="priceGradient" x1="0" y1="0" x2="0" y2="1">
-                                            <stop offset="0%" stopColor="#43d88a" stopOpacity={0.3} />
-                                            <stop offset="100%" stopColor="#43d88a" stopOpacity={0.02} />
+                                            <stop offset="0%" stopColor="#009B3A" stopOpacity={0.15} />
+                                            <stop offset="100%" stopColor="#009B3A" stopOpacity={0.01} />
                                         </linearGradient>
                                     </defs>
-                                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" />
+                                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" />
                                     <XAxis
                                         dataKey="date"
-                                        tick={{ fontSize: 11, fill: '#556070' }}
+                                        tick={{ fontSize: 11, fill: '#8A919A' }}
                                         tickLine={false}
-                                        axisLine={{ stroke: 'rgba(255,255,255,0.06)' }}
+                                        axisLine={{ stroke: 'rgba(0,0,0,0.08)' }}
                                         interval="preserveStartEnd"
                                     />
                                     <YAxis
-                                        tick={{ fontSize: 11, fill: '#556070' }}
+                                        tick={{ fontSize: 11, fill: '#8A919A' }}
                                         tickLine={false}
                                         axisLine={false}
                                         tickFormatter={(v) => `$${v.toFixed(2)}`}
@@ -137,39 +139,39 @@ export default function TransparencyModal({ product, priceHistory, onClose }) {
                                     <Tooltip content={<CustomTooltip />} />
                                     <ReferenceLine
                                         y={medianPrice}
-                                        stroke="#3b82f6"
+                                        stroke="#2563EB"
                                         strokeDasharray="6 4"
                                         strokeWidth={1.5}
                                         label={{
                                             value: `Median $${medianPrice.toFixed(2)}`,
                                             position: 'insideTopRight',
-                                            fill: '#60a5fa',
+                                            fill: '#2563EB',
                                             fontSize: 11,
                                         }}
                                     />
                                     <ReferenceLine
                                         y={currentPrice}
-                                        stroke="#43d88a"
+                                        stroke="#009B3A"
                                         strokeDasharray="3 3"
                                         strokeWidth={1}
                                         label={{
                                             value: `You pay $${currentPrice.toFixed(2)}`,
                                             position: 'insideBottomRight',
-                                            fill: '#43d88a',
+                                            fill: '#009B3A',
                                             fontSize: 11,
                                         }}
                                     />
                                     <Area
                                         type="monotone"
                                         dataKey="price"
-                                        stroke="#43d88a"
+                                        stroke="#009B3A"
                                         strokeWidth={2}
                                         fill="url(#priceGradient)"
                                         dot={false}
                                         activeDot={{
                                             r: 5,
-                                            fill: '#43d88a',
-                                            stroke: '#0a0e14',
+                                            fill: '#009B3A',
+                                            stroke: '#FFFFFF',
                                             strokeWidth: 2,
                                         }}
                                     />
@@ -181,7 +183,7 @@ export default function TransparencyModal({ product, priceHistory, onClose }) {
                     {/* Compliance Footer */}
                     <div className="modal-compliance">
                         <p>
-                            🏛️ This disclosure is provided in compliance with the{' '}
+                            This disclosure is provided in compliance with the{' '}
                             <a href="#ny-algo-act">
                                 New York Algorithmic Pricing Disclosure Act (2025)
                             </a>
