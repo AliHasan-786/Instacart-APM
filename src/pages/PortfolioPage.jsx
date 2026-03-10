@@ -82,7 +82,13 @@ const sideColors = {
 
 export default function PortfolioPage() {
     return (
-        <div style={{ minHeight: '100vh', background: '#FFFFFF' }}>
+        <div style={{
+            minHeight: '100vh',
+            backgroundColor: '#FFFFFF',
+            backgroundImage: 'radial-gradient(circle at 15% 50%, rgba(0, 155, 58, 0.04), transparent 25%), radial-gradient(circle at 85% 30%, rgba(0, 155, 58, 0.04), transparent 25%)',
+            backgroundAttachment: 'fixed',
+            paddingBottom: 80
+        }}>
             {/* Hero */}
             <div style={{
                 maxWidth: 880, margin: '0 auto', padding: '80px 24px 48px', textAlign: 'center',
@@ -130,6 +136,46 @@ export default function PortfolioPage() {
                             {tag}
                         </span>
                     ))}
+                </div>
+            </div>
+
+            {/* About Section */}
+            <div style={{
+                maxWidth: 880, margin: '0 auto 48px', padding: '0 24px',
+                animation: 'fadeIn 0.8s ease',
+            }}>
+                <div style={{
+                    padding: '32px 40px', borderRadius: '16px',
+                    background: 'rgba(255, 255, 255, 0.7)',
+                    backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)',
+                    border: '1px solid rgba(0, 155, 58, 0.15)',
+                    boxShadow: '0 8px 32px rgba(0, 155, 58, 0.06)',
+                    position: 'relative', overflow: 'hidden'
+                }}>
+                    <div style={{
+                        position: 'absolute', top: -50, right: -50, width: 150, height: 150,
+                        background: 'radial-gradient(circle, rgba(0, 155, 58, 0.1) 0%, transparent 70%)',
+                        zIndex: 0
+                    }} />
+                    <div style={{ position: 'relative', zIndex: 1 }}>
+                        <h2 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#1B1B1B', marginBottom: 16 }}>
+                            Hi, I'm Ali.
+                        </h2>
+                        <div style={{ fontSize: '0.95rem', color: '#4A5568', lineHeight: 1.7, display: 'flex', flexDirection: 'column', gap: 16 }}>
+                            <p>
+                                I'm currently completing my Master of Engineering in Data Science at Cornell Tech, I spend my days building multi-agent AI systems, evaluating large language models, and studying operations research. I genuinely love the technical side of the work. But I realized early on that the most elegant algorithms do not matter if they fail to solve real human problems. I gravitated toward product strategy because I am driven by user empathy. I want to figure out why we are building something before we figure out how to build it.
+                            </p>
+                            <p>
+                                A core pillar of my product philosophy is Trust and Safety. Through my experience red-teaming public AI tools and developing algorithmic fairness policies, I have learned that trust is the ultimate currency of any platform. If a system is mathematically efficient but ethically flawed, the product ultimately fails.
+                            </p>
+                            <p style={{ fontWeight: 600, color: '#1B1B1B' }}>
+                                This is exactly why I want to join Instacart as an APM.
+                            </p>
+                            <p>
+                                Instacart is not just a delivery app. It is a highly complex four-sided marketplace balancing the needs of consumers, shoppers, retailers, and advertisers. I want to tackle the hard problems at the intersection of these groups. Whether it is optimizing reinforcement learning models to make shopper batching more equitable, designing transparent pricing architectures that build consumer trust, or scaling agentic AI to help families make healthier choices, I am ready to dive in. I have the technical depth to understand the backend architecture and the product vision to advocate for the user.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -314,7 +360,7 @@ export default function PortfolioPage() {
             {/* Footer */}
             <div style={{
                 padding: '32px 24px', textAlign: 'center',
-                borderTop: '1px solid #E8E8E8',
+                borderTop: '1px solid rgba(0,0,0,0.06)',
             }}>
                 <p style={{ fontSize: '0.8rem', color: '#8A919A' }}>
                     Ali Hasan · Cornell Tech · Instacart APM 2026 Cohort Application

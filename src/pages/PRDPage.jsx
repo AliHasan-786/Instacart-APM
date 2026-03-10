@@ -143,13 +143,6 @@ export default function PRDPage() {
                     ))}
                 </div>
 
-                <div style={{ marginTop: 64, padding: 24, borderRadius: 12, background: '#FFFFFF', border: '1px solid #E8E8E8', display: 'flex', gap: 16, alignItems: 'flex-start' }}>
-                    <CheckCircle2 color="#009B3A" size={24} style={{ flexShrink: 0 }} />
-                    <div>
-                        <div style={{ fontWeight: 600, color: '#1B1B1B', marginBottom: 4 }}>End of Document</div>
-                        <div style={{ fontSize: '0.85rem', color: '#637381' }}>This is a simulated product requirement document created to demonstrate core product management capabilities such as goal setting, problem definition, and feature scope scoping.</div>
-                    </div>
-                </div>
             </div>
         </div>
     )
