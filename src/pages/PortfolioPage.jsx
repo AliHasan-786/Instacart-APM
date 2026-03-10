@@ -48,24 +48,28 @@ const documents = [
         type: 'PRD',
         description: 'User stories, acceptance criteria, and technical scope for algorithmic pricing transparency across the consumer browsing experience.',
         color: '#009B3A',
+        link: '/prd/instatrust'
     },
     {
         title: 'EquiBatch — Product Requirements Document',
         type: 'PRD',
         description: 'Requirement specs for the RL-based dispatch optimizer, covering MDP formulation, shopper equity constraints, and SLA thresholds.',
         color: '#2563EB',
+        link: '/prd/equibatch'
     },
     {
         title: 'Caper Context — Product Requirements Document',
         type: 'PRD',
         description: 'End-to-end product spec for dietary guardrails on Caper Carts, including RAG retrieval, ADA compliance, and Carrot Ads integration.',
         color: '#D49212',
+        link: '/prd/caper-context'
     },
     {
         title: 'Product Strategy — Marketplace Trust Framework',
         type: 'Strategy',
         description: 'Strategic narrative connecting all three prototypes to Instacart\'s four-sided marketplace trust model and 2026 growth pillars.',
         color: '#637381',
+        link: '/prd/strategy'
     },
 ]
 
@@ -260,44 +264,48 @@ export default function PortfolioPage() {
                         gap: 16,
                     }}>
                         {documents.map((doc, i) => (
-                            <div key={i} style={{
-                                padding: '20px 24px', borderRadius: '12px',
-                                background: '#FFFFFF', border: '1px solid #E8E8E8',
-                                boxShadow: '0 1px 3px rgba(0,0,0,0.03)',
-                                transition: 'all 0.25s ease',
-                                cursor: 'pointer',
-                            }}
-                                onMouseEnter={(e) => {
-                                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.06)'
-                                    e.currentTarget.style.borderColor = '#C4C9CF'
+                            <Link to={doc.link} key={i} style={{ textDecoration: 'none' }}>
+                                <div style={{
+                                    padding: '20px 24px', borderRadius: '12px',
+                                    background: '#FFFFFF', border: '1px solid #E8E8E8',
+                                    boxShadow: '0 1px 3px rgba(0,0,0,0.03)',
+                                    transition: 'all 0.25s ease',
+                                    cursor: 'pointer',
+                                    height: '100%',
                                 }}
-                                onMouseLeave={(e) => {
-                                    e.currentTarget.style.boxShadow = '0 1px 3px rgba(0,0,0,0.03)'
-                                    e.currentTarget.style.borderColor = '#E8E8E8'
-                                }}
-                            >
-                                <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
-                                    <span style={{
-                                        padding: '2px 8px', borderRadius: '4px', fontSize: '0.68rem',
-                                        fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em',
-                                        background: `${doc.color}0A`, color: doc.color,
-                                        border: `1px solid ${doc.color}18`,
+                                    onMouseEnter={(e) => {
+                                        e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.06)'
+                                        e.currentTarget.style.borderColor = '#C4C9CF'
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.currentTarget.style.boxShadow = '0 1px 3px rgba(0,0,0,0.03)'
+                                        e.currentTarget.style.borderColor = '#E8E8E8'
+                                    }}
+                                >
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
+                                        <span style={{
+                                            padding: '2px 8px', borderRadius: '4px', fontSize: '0.68rem',
+                                            fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em',
+                                            background: `${doc.color}0A`, color: doc.color,
+                                            border: `1px solid ${doc.color}18`,
+                                        }}>
+                                            {doc.type}
+                                        </span>
+                                    </div>
+                                    <h3 style={{
+                                        fontSize: '0.95rem', fontWeight: 600, marginBottom: 6,
+                                        color: '#1B1B1B',
                                     }}>
-                                        {doc.type}
-                                    </span>
+                                        {doc.title}
+                                    </h3>
+                                    <p style={{
+                                        fontSize: '0.82rem', color: '#637381', lineHeight: 1.5,
+                                        margin: 0
+                                    }}>
+                                        {doc.description}
+                                    </p>
                                 </div>
-                                <h3 style={{
-                                    fontSize: '0.95rem', fontWeight: 600, marginBottom: 6,
-                                    color: '#1B1B1B',
-                                }}>
-                                    {doc.title}
-                                </h3>
-                                <p style={{
-                                    fontSize: '0.82rem', color: '#637381', lineHeight: 1.5,
-                                }}>
-                                    {doc.description}
-                                </p>
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 </div>

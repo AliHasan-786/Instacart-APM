@@ -6,16 +6,16 @@
 /* ─── CSS Custom Properties ─────────────────────────────────────── */
 :root {
   /* Instacart Brand Palette */
-  --ic-green-50: #e8f5ee;
-  --ic-green-100: #b8e4cc;
-  --ic-green-200: #7dd3aa;
-  --ic-green-300: #43c288;
-  --ic-green-400: #009B3A;
-  --ic-green-500: #008a33;
-  --ic-green-600: #00752c;
-  --ic-green-700: #003D29;
-  --ic-green-800: #002a1c;
-  --ic-carrot: #F26722;
+  --ic-green-50: #e6f6eb;
+  --ic-green-100: #c0ebd2;
+  --ic-green-200: #9addbc;
+  --ic-green-300: #4bc67c;
+  --ic-green-400: #0AAD0A;
+  --ic-green-500: #099b09;
+  --ic-green-600: #078007;
+  --ic-green-700: #055f05;
+  --ic-green-800: #033c03;
+  --ic-carrot: #FF8200;
 
   /* Neutrals */
   --neutral-950: #1B1B1B;
@@ -57,13 +57,13 @@
   --radius-xl: 20px;
   --radius-full: 9999px;
 
-  /* Shadows */
-  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.07);
-  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08);
-  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.03);
-  --shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  /* Shadows (Softer, modern) */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.03);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.08);
+  --shadow-card: 0 2px 6px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.02);
+  --shadow-card-hover: 0 12px 28px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.04);
 
   /* Transitions */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);

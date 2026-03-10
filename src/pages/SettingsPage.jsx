@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import { defaultPreferences } from '../data'
+import { ReceiptText, MapPin, Eye, ShoppingBasket, DollarSign, Database, Download, Trash2, FileText, Scale } from 'lucide-react'
 
 export default function SettingsPage() {
     const [enabled, setEnabled] = useState(defaultPreferences.algorithmicPricingEnabled)
     const savings = defaultPreferences.estimatedMonthlySavings
     const dataCategories = defaultPreferences.dataCategories
 
-    const dataCategoryIcons = ['P', 'L', 'B', 'C']
+    const dataCategoryIcons = [<ReceiptText size={18} />, <MapPin size={18} />, <Eye size={18} />, <ShoppingBasket size={18} />]
 
     return (
         <div className="page-content">
@@ -21,7 +22,7 @@ export default function SettingsPage() {
                     {/* Section 1: Algorithmic Pricing Toggle */}
                     <div className="settings-section">
                         <div className="settings-section-header">
-                            <div className="settings-section-icon green">$</div>
+                            <div className="settings-section-icon green"><DollarSign size={16} strokeWidth={2.5} /></div>
                             <h2>Algorithmic Pricing & Personalization</h2>
                         </div>
 
@@ -100,7 +101,7 @@ export default function SettingsPage() {
                     <div className="settings-section">
                         <div className="settings-section-header">
                             <div className="settings-section-icon blue">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
+                                <Database size={16} strokeWidth={2.5} />
                             </div>
                             <h2>Data Transparency</h2>
                         </div>
@@ -126,7 +127,7 @@ export default function SettingsPage() {
                     <div className="settings-section">
                         <div className="settings-section-header">
                             <div className="settings-section-icon amber">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" /><path d="M12 16v-4" /><path d="M12 8h.01" /></svg>
+                                <Scale size={16} strokeWidth={2.5} />
                             </div>
                             <h2>Your Rights</h2>
                         </div>
@@ -136,7 +137,7 @@ export default function SettingsPage() {
                                 <div className="rights-item" id="download-data-btn">
                                     <div className="rights-item-left">
                                         <span className="rights-item-icon">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg>
+                                            <Download size={16} />
                                         </span>
                                         <span className="rights-item-text">Download My Data</span>
                                     </div>
@@ -145,7 +146,7 @@ export default function SettingsPage() {
                                 <div className="rights-item" id="delete-data-btn">
                                     <div className="rights-item-left">
                                         <span className="rights-item-icon">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="3 6 5 6 21 6" /><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /></svg>
+                                            <Trash2 size={16} />
                                         </span>
                                         <span className="rights-item-text">Request Data Deletion</span>
                                     </div>
@@ -154,7 +155,7 @@ export default function SettingsPage() {
                                 <div className="rights-item">
                                     <div className="rights-item-left">
                                         <span className="rights-item-icon">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /></svg>
+                                            <FileText size={16} />
                                         </span>
                                         <span className="rights-item-text">View Algorithmic Impact Assessment</span>
                                     </div>
@@ -163,7 +164,7 @@ export default function SettingsPage() {
                                 <div className="rights-item">
                                     <div className="rights-item-left">
                                         <span className="rights-item-icon">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+                                            <Scale size={16} />
                                         </span>
                                         <span className="rights-item-text">NY Pricing Disclosure Act — Your Rights</span>
                                     </div>

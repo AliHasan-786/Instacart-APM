@@ -6,6 +6,7 @@ import ProductPage from './pages/ProductPage'
 import SettingsPage from './pages/SettingsPage'
 import EquiBatchPage from './pages/EquiBatchPage'
 import CaperContextPage from './pages/CaperContextPage'
+import PRDPage from './pages/PRDPage'
 
 export default function App() {
     const location = useLocation()
@@ -28,6 +29,9 @@ export default function App() {
 
                 {/* Caper Context */}
                 <Route path="/caper" element={<CaperContextPage />} />
+
+                {/* PRD Documentation */}
+                <Route path="/prd/:id" element={<PRDPage />} />
             </Routes>
         </>
     )

@@ -56,7 +56,9 @@ export default function TransparencyModal({ product, priceHistory, onClose }) {
                         </span>
                         How Your Price Was Determined
                     </h2>
-                    <button className="modal-close" onClick={onClose} id="modal-close-btn">✕</button>
+                    <button className="modal-close" onClick={onClose} id="modal-close-btn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    </button>
                 </div>
                 <p className="modal-subtitle">
                     Transparent breakdown for <strong>{product.name}</strong> ({product.unit})

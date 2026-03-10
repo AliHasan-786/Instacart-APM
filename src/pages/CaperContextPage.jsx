@@ -1,6 +1,16 @@
 import { useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { dietaryProfiles, groceryItems, checkViolation, getAlternative, flagLabels, aisleMap, computeHealthScore } from '../caperData'
+import { ShoppingCart, Brain, ShieldAlert, CheckCircle2, AlertTriangle, Activity, Ticket, PartyPopper, ArrowLeft, X, Dumbbell, Wheat, Stethoscope } from 'lucide-react'
+
+const getProfileIcon = (id, size = 18) => {
+    switch (id) {
+        case 'diabetic': return <Stethoscope size={size} />;
+        case 'athlete': return <Dumbbell size={size} />;
+        case 'gluten-free': return <Wheat size={size} />;
+        default: return <Activity size={size} />;
+    }
+}
 
 function StoreMap({ highlightAisle, scannedAisles }) {
     return (
@@ -58,8 +68,8 @@ function HowItWorksModal({ onClose }) {
         <div className="modal-overlay" onClick={onClose}>
             <div className="modal-content" onClick={(e) => e.stopPropagation()} style={{ maxWidth: 640 }}>
                 <div className="modal-header">
-                    <h2><span className="modal-header-icon">🧠</span> How Caper Context Works</h2>
-                    <button className="modal-close" onClick={onClose}>✕</button>
+                    <h2><span className="modal-header-icon" style={{ display: 'flex', alignItems: 'center' }}><Brain size={20} /></span> How Caper Context Works</h2>
+                    <button className="modal-close" onClick={onClose}><X size={18} /></button>
                 </div>
                 <div className="modal-body">
                     <div style={{
@@ -192,10 +202,12 @@ export default function CaperContextPage() {
                 background: 'rgba(10,14,20,0.9)', backdropFilter: 'blur(12px)',
             }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                    <Link to="/" style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>← Portfolio</Link>
+                    <Link to="/" style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: 4 }}>
+                        <ArrowLeft size={16} /> Portfolio
+                    </Link>
                     <div style={{ width: 1, height: 20, background: 'var(--border-subtle)' }} />
-                    <div style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: '1.1rem' }}>
-                        🛒 Caper<span style={{ color: '#fbbf24' }}>Context</span>
+                    <div style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: '1.1rem', display: 'flex', alignItems: 'center', gap: 6 }}>
+                        <ShoppingCart size={18} color="#fbbf24" /> Caper<span style={{ color: '#fbbf24' }}>Context</span>
                     </div>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
@@ -205,10 +217,11 @@ export default function CaperContextPage() {
                             padding: '6px 14px', borderRadius: 'var(--radius-full)',
                             background: 'var(--bg-glass)', border: '1px solid var(--border-glass)',
                             color: 'var(--text-secondary)', fontSize: '0.8rem', fontWeight: 500,
+                            display: 'flex', alignItems: 'center', gap: 6
                         }}
                         id="how-it-works-btn"
                     >
-                        🧠 How It Works
+                        <Brain size={14} /> How It Works
                     </button>
                     <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Caper Cart™ Simulator</div>
                 </div>
@@ -231,10 +244,10 @@ export default function CaperContextPage() {
                             border: `1px solid ${profile.id === p.id ? p.color : 'var(--border-subtle)'}`,
                             color: profile.id === p.id ? p.color : 'var(--text-secondary)',
                             fontSize: '0.85rem', fontWeight: 600, cursor: 'pointer',
-                            transition: 'all 0.2s ease',
+                            transition: 'all 0.2s ease', display: 'flex', alignItems: 'center', gap: 6
                         }}
                     >
-                        {p.icon} {p.name}
+                        {getProfileIcon(p.id, 16)} {p.name}
                     </button>
                 ))}
             </div>
@@ -278,9 +291,9 @@ export default function CaperContextPage() {
                                     </div>
                                     {isScanned ? (
                                         isScanned.violations ? (
-                                            <span style={{ fontSize: '0.75rem', color: '#f87171', fontWeight: 600 }}>⚠️ Flagged</span>
+                                            <span style={{ fontSize: '0.75rem', color: '#C83232', fontWeight: 600, display: 'flex', alignItems: 'center', gap: 4 }}><AlertTriangle size={14} /> Flagged</span>
                                         ) : (
-                                            <span style={{ fontSize: '0.75rem', color: '#43d88a', fontWeight: 600 }}>✅ OK</span>
+                                            <span style={{ fontSize: '0.75rem', color: '#0AAD0A', fontWeight: 600, display: 'flex', alignItems: 'center', gap: 4 }}><CheckCircle2 size={14} /> OK</span>
                                         )
                                     ) : (
                                         <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Tap to Scan</span>
@@ -301,8 +314,8 @@ export default function CaperContextPage() {
                             marginBottom: 20, animation: 'slideUp 0.3s cubic-bezier(0.16,1,0.3,1)',
                         }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
-                                <span style={{ fontSize: '1.3rem' }}>🚨</span>
-                                <h3 style={{ fontSize: '1rem', color: '#f87171' }}>AI Health Guardrail Alert</h3>
+                                <span style={{ display: 'flex', alignItems: 'center', color: '#C83232' }}><ShieldAlert size={20} /></span>
+                                <h3 style={{ fontSize: '1rem', color: '#C83232' }}>AI Health Guardrail Alert</h3>
                             </div>
                             <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: 12 }}>
                                 <strong>{alertItem.item.name}</strong> violates your <strong>{profile.name}</strong> dietary profile:
@@ -338,8 +351,8 @@ export default function CaperContextPage() {
                                             style={{ width: 40, height: 40, borderRadius: 8, objectFit: 'cover' }}
                                         />
                                         <div>
-                                            <div style={{ fontWeight: 600, fontSize: '0.9rem', color: '#43d88a' }}>
-                                                ✅ {alertItem.alternative.name}
+                                            <div style={{ fontWeight: 600, fontSize: '0.9rem', color: '#0AAD0A', display: 'flex', alignItems: 'center', gap: 6 }}>
+                                                <CheckCircle2 size={14} /> {alertItem.alternative.name}
                                             </div>
                                             <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
                                                 {alertItem.alternative.brand} · {alertItem.alternative.aisle}
@@ -351,9 +364,9 @@ export default function CaperContextPage() {
                                             display: 'inline-flex', alignItems: 'center', gap: 4,
                                             padding: '3px 10px', borderRadius: 'var(--radius-full)',
                                             background: 'rgba(96,165,250,0.12)', fontSize: '0.7rem',
-                                            fontWeight: 600, color: '#60a5fa', marginBottom: 10,
+                                            fontWeight: 600, color: '#2563EB', marginBottom: 10,
                                         }}>
-                                            🏥 ADA Approved
+                                            <Activity size={12} /> ADA Approved
                                         </div>
                                     )}
                                     <button
@@ -364,9 +377,10 @@ export default function CaperContextPage() {
                                             background: 'linear-gradient(135deg, var(--ic-green-500), var(--ic-green-600))',
                                             color: '#fff', fontWeight: 600, fontSize: '0.85rem',
                                             boxShadow: '0 4px 16px rgba(10,175,84,0.3)',
+                                            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8
                                         }}
                                     >
-                                        🎫 Swap & Unlock 15% Coupon
+                                        <Ticket size={16} /> Swap & Unlock 15% Coupon
                                     </button>
                                 </div>
                             )}
@@ -393,8 +407,8 @@ export default function CaperContextPage() {
                             background: 'rgba(67,216,138,0.06)', border: '1px solid rgba(67,216,138,0.15)',
                             marginBottom: 20,
                         }}>
-                            <div style={{ fontSize: '0.85rem', fontWeight: 600, color: '#43d88a', marginBottom: 6 }}>
-                                🎉 Coupons Unlocked via Carrot Ads
+                            <div style={{ fontSize: '0.85rem', fontWeight: 600, color: '#0AAD0A', marginBottom: 6, display: 'flex', alignItems: 'center', gap: 6 }}>
+                                <PartyPopper size={16} /> Coupons Unlocked via Carrot Ads
                             </div>
                             {Object.keys(couponUnlocked).map((id) => {
                                 const item = groceryItems.find((g) => g.id === Number(id))
@@ -410,8 +424,8 @@ export default function CaperContextPage() {
                     {/* Cart Summary */}
                     <div>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-                            <h2 style={{ fontSize: '1.15rem' }}>
-                                🛒 Your Cart ({scannedItems.length} items)
+                            <h2 style={{ fontSize: '1.15rem', display: 'flex', alignItems: 'center', gap: 8 }}>
+                                <ShoppingCart size={20} /> Your Cart ({scannedItems.length} items)
                             </h2>
                             <div style={{
                                 display: 'flex', alignItems: 'center', gap: 6, padding: '4px 12px',
@@ -432,7 +446,9 @@ export default function CaperContextPage() {
                                 background: 'var(--bg-glass)', borderRadius: 'var(--radius-lg)',
                                 border: '1px solid var(--border-subtle)',
                             }}>
-                                <div style={{ fontSize: '2rem', marginBottom: 8 }}>🛒</div>
+                                <div style={{ marginBottom: 8, display: 'flex', justifyContent: 'center' }}>
+                                    <ShoppingCart size={32} color="var(--text-muted)" opacity={0.5} />
+                                </div>
                                 <div style={{ fontSize: '0.85rem' }}>Scan items to add them to your cart</div>
                                 <div style={{ fontSize: '0.75rem', marginTop: 4 }}>
                                     AI guardrails will flag items that conflict with your dietary profile
@@ -452,12 +468,12 @@ export default function CaperContextPage() {
                                             <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>${item.price.toFixed(2)}</div>
                                         </div>
                                         {couponUnlocked[item.id] && (
-                                            <span style={{ fontSize: '0.65rem', color: '#fbbf24', fontWeight: 600 }}>🎫 -15%</span>
+                                            <span style={{ fontSize: '0.65rem', color: '#fbbf24', fontWeight: 600, display: 'flex', alignItems: 'center', gap: 4 }}><Ticket size={10} /> -15%</span>
                                         )}
                                         {item.violations ? (
-                                            <span style={{ fontSize: '0.7rem', color: '#f87171' }}>⚠️ Flagged</span>
+                                            <span style={{ fontSize: '0.7rem', color: '#C83232', display: 'flex', alignItems: 'center', gap: 2 }}><AlertTriangle size={12} /> Flagged</span>
                                         ) : (
-                                            <span style={{ fontSize: '0.7rem', color: '#43d88a' }}>✅</span>
+                                            <span style={{ fontSize: '0.7rem', color: '#0AAD0A', display: 'flex', alignItems: 'center' }}><CheckCircle2 size={12} /></span>
                                         )}
                                     </div>
                                 ))}
@@ -535,7 +551,7 @@ export default function CaperContextPage() {
                         border: `1px solid ${profile.color}20`, borderRadius: 'var(--radius-lg)',
                     }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-                            <span style={{ fontSize: '1.3rem' }}>{profile.icon}</span>
+                            <span style={{ display: 'flex', color: profile.color }}>{getProfileIcon(profile.id, 24)}</span>
                             <div>
                                 <div style={{ fontWeight: 600, fontSize: '0.9rem', color: profile.color }}>{profile.name}</div>
                                 <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>{profile.label}</div>

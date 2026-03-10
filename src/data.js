@@ -55,7 +55,7 @@ export const products = [
         category: 'Bakery',
         price: 4.49,
         unit: '1 loaf',
-        image: 'https://images.unsplash.com/photo-1585478259715-876acc5be8eb?w=400&h=400&fit=crop',
+        image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&h=400&fit=crop',
         algorithmicFactors: {
             baseCost: 3.20,
             demandMultiplier: 1.05,

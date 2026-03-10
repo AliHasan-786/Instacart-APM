@@ -3,6 +3,12 @@ import { MapContainer, TileLayer, Marker, Popup, Polyline, useMap } from 'react-
 import L from 'leaflet'
 import { Link } from 'react-router-dom'
 import {
+    Calculator, Store, Snowflake, Zap, CircleDollarSign,
+    Map, Timer, BarChart3, Smile, AlertTriangle, Truck,
+    Package, ArrowLeft, X
+} from 'lucide-react'
+import { createRoot } from 'react-dom/client'
+import {
     orders, STORE_LOCATION, computeBatches, computeMetrics,
     getOrderType, getOrderColor,
 } from '../equibatchData'
@@ -30,9 +36,9 @@ const storeIcon = L.divIcon({
     width:36px;height:36px;border-radius:8px;
     background:linear-gradient(135deg,#0aaf54,#43d88a);
     border:2px solid #fff;display:flex;align-items:center;
-    justify-content:center;font-size:18px;
+    justify-content:center;color:#fff;
     box-shadow:0 2px 12px rgba(10,175,84,0.5);
-  ">🏪</div>`,
+  "><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"/><path d="m3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9"/><path d="M12 3v6"/></svg></div>`,
     iconSize: [36, 36],
     iconAnchor: [18, 18],
 })
@@ -42,8 +48,8 @@ function AlgorithmModal({ onClose }) {
         <div className="modal-overlay" onClick={onClose}>
             <div className="modal-content" onClick={(e) => e.stopPropagation()} style={{ maxWidth: 620 }}>
                 <div className="modal-header">
-                    <h2><span className="modal-header-icon">🧮</span> Algorithm Logic — MDP Reward Function</h2>
-                    <button className="modal-close" onClick={onClose}>✕</button>
+                    <h2><span className="modal-header-icon"><Calculator size={20} /></span> Algorithm Logic — MDP Reward Function</h2>
+                    <button className="modal-close" onClick={onClose}><X size={18} /></button>
                 </div>
                 <div className="modal-body">
                     <div style={{
@@ -107,25 +113,28 @@ export default function EquiBatchPage() {
             <div style={{
                 height: 56, display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                 padding: '0 24px', borderBottom: '1px solid var(--border-subtle)',
-                background: 'rgba(10,14,20,0.9)', backdropFilter: 'blur(12px)',
+                background: 'rgba(255,255,255,0.92)', backdropFilter: 'blur(12px)',
             }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                    <Link to="/" style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>← Portfolio</Link>
+                    <Link to="/" style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: 4 }}>
+                        <ArrowLeft size={16} /> Portfolio
+                    </Link>
                     <div style={{ width: 1, height: 20, background: 'var(--border-subtle)' }} />
-                    <div style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: '1.1rem' }}>
-                        ⚡ Equi<span style={{ color: 'var(--blue-400)' }}>Batch</span>
+                    <div style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: '1.1rem', display: 'flex', alignItems: 'center', gap: 6 }}>
+                        <Zap size={18} color="var(--blue-500)" /> Equi<span style={{ color: 'var(--blue-500)' }}>Batch</span>
                     </div>
                 </div>
                 <button
                     onClick={() => setShowAlgoModal(true)}
                     style={{
                         padding: '6px 14px', borderRadius: 'var(--radius-full)',
-                        background: 'var(--bg-glass)', border: '1px solid var(--border-glass)',
+                        background: 'var(--neutral-50)', border: '1px solid var(--border-subtle)',
                         color: 'var(--text-secondary)', fontSize: '0.8rem', fontWeight: 500,
+                        display: 'flex', alignItems: 'center', gap: 6,
                     }}
                     id="algo-modal-btn"
                 >
-                    🧮 View Algorithm Logic
+                    <Calculator size={14} /> View Algorithm Logic
                 </button>
             </div>
 
@@ -159,7 +168,7 @@ export default function EquiBatchPage() {
                                     <div style={{ fontFamily: 'Inter, sans-serif', fontSize: 13 }}>
                                         <strong>{o.customer}</strong><br />
                                         Tip: ${o.tip} · {o.items} items · {o.distance} mi<br />
-                                        {o.perishable && <span style={{ color: '#f87171' }}>❄️ Perishable</span>}
+                                        {o.perishable && <span style={{ color: '#C83232', display: 'flex', alignItems: 'center', gap: 4, marginTop: 4 }}><Snowflake size={14} /> Perishable</span>}
                                     </div>
                                 </Popup>
                             </Marker>
@@ -189,9 +198,10 @@ export default function EquiBatchPage() {
                     {/* Legend */}
                     <div style={{
                         position: 'absolute', bottom: 20, left: 20, zIndex: 1000,
-                        background: 'rgba(10,14,20,0.9)', backdropFilter: 'blur(12px)',
-                        border: '1px solid var(--border-glass)', borderRadius: 'var(--radius-md)',
+                        background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(12px)',
+                        border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)',
                         padding: '12px 16px', display: 'flex', gap: 16, fontSize: '0.75rem',
+                        boxShadow: 'var(--shadow-md)',
                     }}>
                         {[
                             { color: '#43d88a', label: 'High Tip (≥$15)' },
@@ -221,16 +231,16 @@ export default function EquiBatchPage() {
 
                     {/* Sliders */}
                     {[
-                        { key: 'alpha', label: 'α — Shopper Hourly Earnings', color: '#43d88a', icon: '💰' },
-                        { key: 'beta', label: 'β — Routing Efficiency (Mileage)', color: '#60a5fa', icon: '🗺️' },
-                        { key: 'gamma', label: 'γ — High-Tipper SLA Priority', color: '#fbbf24', icon: '⏱️' },
+                        { key: 'alpha', label: 'α — Shopper Hourly Earnings', color: '#0AAD0A', icon: <CircleDollarSign size={16} /> },
+                        { key: 'beta', label: 'β — Routing Efficiency (Mileage)', color: '#2563EB', icon: <Map size={16} /> },
+                        { key: 'gamma', label: 'γ — High-Tipper SLA Priority', color: '#D49212', icon: <Timer size={16} /> },
                     ].map((s) => (
                         <div key={s.key} style={{
-                            padding: 16, background: 'var(--bg-glass)', border: '1px solid var(--border-subtle)',
+                            padding: 16, background: 'var(--neutral-50)', border: '1px solid var(--border-subtle)',
                             borderRadius: 'var(--radius-md)',
                         }}>
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
-                                <span style={{ fontSize: '0.85rem', fontWeight: 600 }}>{s.icon} {s.label}</span>
+                                <span style={{ fontSize: '0.85rem', fontWeight: 600, display: 'flex', alignItems: 'center', gap: 6, color: 'var(--text-secondary)' }}>{s.icon} {s.label}</span>
                                 <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, color: s.color }}>
                                     {weights[s.key].toFixed(2)}
                                 </span>
@@ -253,23 +263,27 @@ export default function EquiBatchPage() {
 
                     {/* Metrics */}
                     <div>
-                        <h3 style={{ fontSize: '1rem', marginBottom: 12 }}>📊 Simulated Impact Metrics</h3>
+                        <h3 style={{ fontSize: '1rem', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 6 }}>
+                            <BarChart3 size={18} color="var(--text-secondary)" /> Simulated Impact Metrics
+                        </h3>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-                            <MetricBar label="Shopper Satisfaction" value={metrics.shopperSat} color="#43d88a" icon="😊" />
-                            <MetricBar label="High-Value Churn Risk" value={metrics.churnRisk} color="#f87171" icon="⚠️" inverted />
-                            <MetricBar label="Delivery Efficiency" value={metrics.efficiency} color="#60a5fa" icon="🚚" />
+                            <MetricBar label="Shopper Satisfaction" value={metrics.shopperSat} color="#0AAD0A" icon={<Smile size={14} />} />
+                            <MetricBar label="High-Value Churn Risk" value={metrics.churnRisk} color="#C83232" icon={<AlertTriangle size={14} />} inverted />
+                            <MetricBar label="Delivery Efficiency" value={metrics.efficiency} color="#2563EB" icon={<Truck size={14} />} />
                         </div>
                     </div>
 
                     {/* Batch Results */}
                     <div>
-                        <h3 style={{ fontSize: '1rem', marginBottom: 12 }}>📦 Batch Assignments ({batches.length} batches)</h3>
+                        <h3 style={{ fontSize: '1rem', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 6 }}>
+                            <Package size={18} color="var(--text-secondary)" /> Batch Assignments ({batches.length} batches)
+                        </h3>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                             {batches.map((batch) => (
                                 <div key={batch.id} style={{
-                                    padding: '12px 14px', background: 'var(--bg-glass)',
+                                    padding: '12px 14px', background: 'var(--neutral-50)',
                                     border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)',
-                                    borderLeft: `3px solid ${batch.color}`,
+                                    borderLeft: `4px solid ${batch.color}`,
                                 }}>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
                                         <span style={{ fontWeight: 600, fontSize: '0.85rem' }}>Batch {batch.id}</span>
@@ -286,11 +300,11 @@ export default function EquiBatchPage() {
                                             </span>
                                         ))}
                                     </div>
-                                    <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', display: 'flex', gap: 12 }}>
-                                        <span>💰 ${batch.totalTip}</span>
-                                        <span>📏 {batch.totalDistance.toFixed(1)} mi</span>
-                                        <span>📦 {batch.totalItems} items</span>
-                                        {batch.hasPerishable && <span>❄️</span>}
+                                    <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', display: 'flex', gap: 12, alignItems: 'center' }}>
+                                        <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}><CircleDollarSign size={12} /> ${batch.totalTip}</span>
+                                        <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}><Map size={12} /> {batch.totalDistance.toFixed(1)} mi</span>
+                                        <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}><Package size={12} /> {batch.totalItems} items</span>
+                                        {batch.hasPerishable && <span style={{ display: 'flex', alignItems: 'center', gap: 4, color: '#C83232' }}><Snowflake size={12} /></span>}
                                     </div>
                                 </div>
                             ))}
@@ -307,22 +321,22 @@ export default function EquiBatchPage() {
 function MetricBar({ label, value, color, icon, inverted }) {
     return (
         <div style={{
-            padding: '12px 14px', background: 'var(--bg-glass)',
+            padding: '12px 14px', background: 'var(--neutral-50)',
             border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)',
         }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
-                <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>{icon} {label}</span>
+                <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', gap: 6 }}>{icon} {label}</span>
                 <span style={{
                     fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: '0.9rem',
-                    color: inverted ? (value > 50 ? '#f87171' : '#43d88a') : color,
+                    color: inverted ? (value > 50 ? '#C83232' : '#0AAD0A') : color,
                 }}>
                     {value}%
                 </span>
             </div>
-            <div style={{ width: '100%', height: 5, background: 'var(--neutral-700)', borderRadius: 3 }}>
+            <div style={{ width: '100%', height: 5, background: 'var(--border-subtle)', borderRadius: 3 }}>
                 <div style={{
                     width: `${value}%`, height: '100%', borderRadius: 3,
-                    background: inverted ? (value > 50 ? '#f87171' : '#43d88a') : color,
+                    background: inverted ? (value > 50 ? '#C83232' : '#0AAD0A') : color,
                     transition: 'width 0.4s cubic-bezier(0.16,1,0.3,1)',
                 }} />
             </div>

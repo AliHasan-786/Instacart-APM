@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
+import { Check } from 'lucide-react'
 import { products, priceHistories } from '../data'
 import TransparencyModal from '../components/TransparencyModal'
 
@@ -79,7 +80,7 @@ export default function ProductPage() {
                             onClick={handleAddToCart}
                             id="add-to-cart-btn"
                         >
-                            {addedToCart ? '✓ Added to Cart' : 'Add to Cart'}
+                            {addedToCart ? <span style={{ display: 'flex', alignItems: 'center', gap: 6, justifyContent: 'center' }}><Check size={18} /> Added to Cart</span> : 'Add to Cart'}
                         </button>
 
                         {/* Meta */}
