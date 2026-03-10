@@ -113,7 +113,7 @@ export default function EquiBatchPage() {
             <div style={{
                 height: 56, display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                 padding: '0 24px', borderBottom: '1px solid var(--border-subtle)',
-                background: 'rgba(255,255,255,0.92)', backdropFilter: 'blur(12px)',
+                background: 'rgba(5, 95, 5, 0.85)', backdropFilter: 'blur(12px)',
             }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                     <Link to="/" style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: 4 }}>
@@ -198,7 +198,7 @@ export default function EquiBatchPage() {
                     {/* Legend */}
                     <div style={{
                         position: 'absolute', bottom: 20, left: 20, zIndex: 1000,
-                        background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(12px)',
+                        background: 'rgba(0, 0, 0, 0.4)', backdropFilter: 'blur(12px)',
                         border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)',
                         padding: '12px 16px', display: 'flex', gap: 16, fontSize: '0.75rem',
                         boxShadow: 'var(--shadow-md)',
