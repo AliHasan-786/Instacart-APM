@@ -101,21 +101,14 @@ export default function PRDPage() {
     }
 
     return (
-        <div style={{
-            minHeight: '100vh',
-            backgroundColor: '#055f05',
-            backgroundImage: 'radial-gradient(circle at 15% 50%, rgba(255, 255, 255, 0.04), transparent 25%), radial-gradient(circle at 85% 30%, rgba(255, 255, 255, 0.04), transparent 25%)',
-            backgroundAttachment: 'fixed',
-            paddingBottom: 80
-        }}>
+        <div style={{ minHeight: '100vh', background: '#FAFAFA', paddingBottom: 80 }}>
             {/* Header */}
             <div style={{
                 height: 60, display: 'flex', alignItems: 'center',
-                padding: '0 24px', borderBottom: '1px solid rgba(255,255,255,0.1)',
-                background: 'rgba(5, 95, 5, 0.85)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)',
-                position: 'sticky', top: 0, zIndex: 10
+                padding: '0 24px', borderBottom: '1px solid #E8E8E8',
+                background: '#FFFFFF', position: 'sticky', top: 0, zIndex: 10
             }}>
-                <Link to="/" style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: 6, textDecoration: 'none' }}>
+                <Link to="/" style={{ color: '#637381', fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: 6, textDecoration: 'none' }}>
                     <ArrowLeft size={16} /> Back to Portfolio
                 </Link>
             </div>
@@ -130,12 +123,12 @@ export default function PRDPage() {
                     }}>
                         <FileText size={24} />
                     </div>
-                    <h1 style={{ fontFamily: 'var(--font-heading)', fontSize: '2rem', fontWeight: 700, color: '#FFFFFF' }}>
+                    <h1 style={{ fontFamily: 'var(--font-heading)', fontSize: '2rem', fontWeight: 700, color: '#1B1B1B' }}>
                         {doc.title}
                     </h1>
                 </div>
 
-                <div style={{ height: 1, background: 'rgba(255,255,255,0.1)', margin: '32px 0' }} />
+                <div style={{ height: 1, background: '#E8E8E8', margin: '32px 0' }} />
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
                     {doc.content.map((section, idx) => (
@@ -143,7 +136,7 @@ export default function PRDPage() {
                             <h2 style={{ fontSize: '1.1rem', fontWeight: 600, color: doc.color, marginBottom: 12 }}>
                                 {section.heading}
                             </h2>
-                            <div style={{ fontSize: '0.95rem', color: 'rgba(255,255,255,0.85)', lineHeight: 1.7, whiteSpace: 'pre-line' }}>
+                            <div style={{ fontSize: '0.95rem', color: '#4A5568', lineHeight: 1.7, whiteSpace: 'pre-line' }}>
                                 {section.text}
                             </div>
                         </div>

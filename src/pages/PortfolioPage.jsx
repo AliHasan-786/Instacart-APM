@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { Carrot } from 'lucide-react'
 
 const prototypes = [
     {
@@ -130,8 +129,8 @@ export default function PortfolioPage() {
                     {['Ali Hasan', 'Cornell Tech'].map((tag, i) => (
                         <span key={i} style={{
                             padding: '5px 14px', borderRadius: '9999px',
-                            background: 'rgba(255, 255, 255, 0.1)', border: '1px solid rgba(255, 255, 255, 0.2)',
-                            fontSize: '0.8rem', color: '#FFFFFF',
+                            background: '#F8F7F5', border: '1px solid #E8E8E8',
+                            fontSize: '0.8rem', color: '#637381',
                             fontWeight: 500,
                         }}>
                             {tag}
@@ -147,29 +146,29 @@ export default function PortfolioPage() {
             }}>
                 <div style={{
                     padding: '32px 40px', borderRadius: '16px',
-                    background: 'rgba(255, 255, 255, 0.08)',
+                    background: 'rgba(255, 255, 255, 0.7)',
                     backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)',
-                    border: '1px solid rgba(255, 255, 255, 0.15)',
-                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
+                    border: '1px solid rgba(0, 155, 58, 0.15)',
+                    boxShadow: '0 8px 32px rgba(0, 155, 58, 0.06)',
                     position: 'relative', overflow: 'hidden'
                 }}>
                     <div style={{
                         position: 'absolute', top: -50, right: -50, width: 150, height: 150,
-                        background: 'radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%)',
+                        background: 'radial-gradient(circle, rgba(0, 155, 58, 0.1) 0%, transparent 70%)',
                         zIndex: 0
                     }} />
                     <div style={{ position: 'relative', zIndex: 1 }}>
-                        <h2 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#FFFFFF', marginBottom: 16 }}>
+                        <h2 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#1B1B1B', marginBottom: 16 }}>
                             Hi, I'm Ali.
                         </h2>
-                        <div style={{ fontSize: '0.95rem', color: 'rgba(255, 255, 255, 0.85)', lineHeight: 1.7, display: 'flex', flexDirection: 'column', gap: 16 }}>
+                        <div style={{ fontSize: '0.95rem', color: '#4A5568', lineHeight: 1.7, display: 'flex', flexDirection: 'column', gap: 16 }}>
                             <p>
                                 I'm currently completing my Master of Engineering in Data Science at Cornell Tech, I spend my days building multi-agent AI systems, evaluating large language models, and studying operations research. I genuinely love the technical side of the work. But I realized early on that the most elegant algorithms do not matter if they fail to solve real human problems. I gravitated toward product strategy because I am driven by user empathy. I want to figure out why we are building something before we figure out how to build it.
                             </p>
                             <p>
                                 A core pillar of my product philosophy is Trust and Safety. Through my experience red-teaming public AI tools and developing algorithmic fairness policies, I have learned that trust is the ultimate currency of any platform. If a system is mathematically efficient but ethically flawed, the product ultimately fails.
                             </p>
-                            <p style={{ fontWeight: 600, color: '#FFFFFF' }}>
+                            <p style={{ fontWeight: 600, color: '#1B1B1B' }}>
                                 This is exactly why I want to join Instacart as an APM.
                             </p>
                             <p>
@@ -234,9 +233,11 @@ export default function PortfolioPage() {
                                 border: `1px solid ${p.border}`,
                                 display: 'flex', alignItems: 'center',
                                 justifyContent: 'center', flexShrink: 0,
-                                color: p.color,
+                                fontFamily: 'var(--font-heading)',
+                                fontSize: '0.95rem', fontWeight: 800,
+                                color: p.color, letterSpacing: '-0.02em',
                             }}>
-                                <Carrot size={28} strokeWidth={2.5} />
+                                {p.letter}
                             </div>
                             <div style={{ flex: 1 }}>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 4 }}>
@@ -282,24 +283,24 @@ export default function PortfolioPage() {
 
             {/* PM Documentation Section */}
             <div style={{
-                background: 'rgba(0, 0, 0, 0.1)', borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+                background: '#F8F7F5', borderTop: '1px solid #E8E8E8',
                 padding: '56px 24px 64px',
             }}>
                 <div style={{ maxWidth: 880, margin: '0 auto' }}>
                     <div style={{ marginBottom: 32 }}>
                         <div style={{
                             fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase',
-                            letterSpacing: '0.06em', color: 'rgba(255, 255, 255, 0.6)', marginBottom: 8,
+                            letterSpacing: '0.06em', color: '#8A919A', marginBottom: 8,
                         }}>
                             Product Management
                         </div>
                         <h2 style={{
                             fontFamily: 'var(--font-heading)', fontSize: '1.6rem', fontWeight: 700,
-                            color: '#FFFFFF', marginBottom: 8,
+                            color: '#1B1B1B', marginBottom: 8,
                         }}>
                             Documentation & Strategy
                         </h2>
-                        <p style={{ fontSize: '0.95rem', color: 'rgba(255, 255, 255, 0.8)', maxWidth: 520 }}>
+                        <p style={{ fontSize: '0.95rem', color: '#637381', maxWidth: 520 }}>
                             Supporting artifacts that demonstrate end-to-end product thinking — from user research through requirements specification.
                         </p>
                     </div>

@@ -199,7 +199,7 @@ export default function CaperContextPage() {
             <div style={{
                 height: 56, display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                 padding: '0 24px', borderBottom: '1px solid var(--border-subtle)',
-                background: 'rgba(5, 95, 5, 0.85)', backdropFilter: 'blur(12px)',
+                background: 'rgba(10,14,20,0.9)', backdropFilter: 'blur(12px)',
             }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                     <Link to="/" style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: 4 }}>
